@@ -1,0 +1,313 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>What Does This Touch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+  :root {
+    --sheet:   #F2F1EC;
+    --card:    #FAF9F5;
+    --ink:     #171B1A;
+    --ink-2:   #434B49;
+    --faint:   #79817E;
+    --rule:    #D6D6CE;
+    --hair:    #E6E5DE;
+    --mark:    #A8371C;   /* surveyor's red: thresholds, and only thresholds */
+    --struct:  #1F5450;   /* structure, links, quiet emphasis */
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --sheet: #121615; --card: #191E1D; --ink: #ECEDE8; --ink-2: #B3BAB7;
+      --faint: #838B88; --rule: #2A3230; --hair: #212826;
+      --mark: #E08468; --struct: #6FBDB4;
+    }
+  }
+  :root[data-theme="dark"] {
+    --sheet: #121615; --card: #191E1D; --ink: #ECEDE8; --ink-2: #B3BAB7;
+    --faint: #838B88; --rule: #2A3230; --hair: #212826;
+    --mark: #E08468; --struct: #6FBDB4;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--sheet);
+    color: var(--ink);
+    font-family: "Newsreader", Georgia, serif;
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .sheet {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 3rem 1.4rem 5rem;
+    display: flex; flex-direction: column; gap: 2.6rem;
+  }
+
+  p { margin: 0; max-width: 34em; }
+  strong { font-weight: 500; color: var(--ink); }
+  em { font-style: italic; }
+
+  .label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .66rem; font-weight: 500; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--faint);
+  }
+
+  header { display: flex; flex-direction: column; gap: .7rem; }
+  h1 {
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: 2.4rem; font-weight: 700; line-height: 1.02;
+    letter-spacing: -.028em; margin: 0; text-wrap: balance;
+  }
+  header .standfirst {
+    font-size: 1.06rem; color: var(--ink-2); max-width: 30em;
+  }
+  header .context { font-size: .95rem; color: var(--ink-2); max-width: 32em; }
+  header .byline {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .74rem; color: var(--faint); padding-top: .5rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  section { display: flex; flex-direction: column; gap: .85rem; }
+  h2 {
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: 1.22rem; font-weight: 600; letter-spacing: -.012em;
+    margin: 0; line-height: 1.2; text-wrap: balance;
+  }
+  .num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .7rem; color: var(--mark); font-weight: 500;
+    letter-spacing: .1em;
+  }
+  .head { display: flex; flex-direction: column; gap: .25rem; }
+
+  /* the plan margin: a hairline that runs beside quoted material */
+  blockquote {
+    margin: .2rem 0; padding: .1rem 0 .1rem 1.1rem;
+    border-left: 2px solid var(--mark);
+    font-size: 1.02rem; color: var(--ink-2); font-style: italic;
+    max-width: 32em;
+  }
+  blockquote cite {
+    display: block; margin-top: .35rem;
+    font-family: "IBM Plex Mono", monospace; font-style: normal;
+    font-size: .7rem; color: var(--faint); letter-spacing: .04em;
+  }
+
+  /* thresholds: measured ticks down a rule */
+  .thresholds { display: flex; flex-direction: column; border-top: 1px solid var(--hair); }
+  .th {
+    display: grid; grid-template-columns: 1.6rem 1fr; gap: 0 .9rem;
+    padding: .8rem 0; border-bottom: 1px solid var(--hair);
+    align-items: start;
+  }
+  .th .tick {
+    font-family: "IBM Plex Mono", monospace; font-size: .76rem;
+    color: var(--mark); padding-top: .18rem;
+  }
+  .th .q {
+    font-family: "Archivo", system-ui, sans-serif;
+    font-weight: 600; font-size: .98rem; color: var(--ink);
+    line-height: 1.35; margin-bottom: .2rem;
+  }
+  .th .why { font-size: .95rem; color: var(--ink-2); }
+
+  /* the two questions, side by side */
+  .pair2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: .9rem; }
+  .qcard {
+    background: var(--card); border: 1px solid var(--hair);
+    border-radius: 3px; padding: .95rem 1rem;
+    display: flex; flex-direction: column; gap: .4rem;
+  }
+  .qcard.generative { border-top: 2px solid var(--struct); }
+  .qcard.custodial  { border-top: 2px solid var(--mark); }
+  .qcard .qq {
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: 1.02rem; font-weight: 700; letter-spacing: -.01em;
+    line-height: 1.25;
+  }
+  .qcard .when {
+    font-family: "IBM Plex Mono", monospace; font-size: .66rem;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--faint);
+  }
+  .qcard p { font-size: .92rem; color: var(--ink-2); }
+
+  /* the evidence table */
+  .evid { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
+  .ev {
+    display: grid; grid-template-columns: 3.4rem 1fr; gap: 0 .9rem;
+    padding: .7rem 0; border-bottom: 1px solid var(--hair); align-items: baseline;
+  }
+  .ev .id {
+    font-family: "IBM Plex Mono", monospace; font-size: .8rem;
+    color: var(--struct); font-weight: 500;
+  }
+  .ev .what { font-size: .95rem; color: var(--ink-2); }
+  .ev .what b { color: var(--ink); font-weight: 500; }
+
+  .aside {
+    background: var(--card); border: 1px solid var(--hair);
+    border-left: 3px solid var(--struct);
+    border-radius: 3px; padding: 1rem 1.1rem;
+    display: flex; flex-direction: column; gap: .55rem;
+  }
+  .aside h3 {
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: .98rem; font-weight: 600; margin: 0;
+  }
+  .aside p { font-size: .94rem; color: var(--ink-2); }
+
+  .kicker {
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: 1.12rem; font-weight: 600; line-height: 1.35;
+    color: var(--ink); max-width: 30em; text-wrap: balance;
+  }
+
+  code {
+    font-family: "IBM Plex Mono", monospace; font-size: .86em;
+    color: var(--struct);
+  }
+
+  footer {
+    border-top: 1px solid var(--rule); padding-top: .9rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: .72rem; color: var(--faint); line-height: 1.7;
+  }
+
+  @media (max-width: 30rem) {
+    body { font-size: 16px; }
+    h1 { font-size: 1.9rem; }
+    .sheet { padding: 2.2rem 1.1rem 3.5rem; gap: 2.1rem; }
+  }
+</style>
+
+<div class="sheet">
+
+  <header>
+    <div class="label">Field notes &middot; one operator, one live product, one month</div>
+    <h1>What Does This Touch</h1>
+    <p class="standfirst">Two questions decide whether a build survives contact with its own success. Almost everybody asks the wrong one, for a very good reason: it is the one that got them there.</p>
+    <p class="byline">Michael Robinson<br>Written 15 September 2026, after a day of four concurrent agent sessions, seven merges and twenty-one issues closed, and a month of 270 pull requests.</p>
+    <p class="context">The product is a stakeholder and property records system for small land access teams, the kind of tool large organisations buy from enterprise vendors, rebuilt for the teams that cannot. It has been live for a year and takes hundreds of merged pull requests a month, almost all of them written by agents and reviewed by one person. It is deliberately not named here; nothing below depends on what it is, only on how it was built.</p>
+  </header>
+
+  <section>
+    <div class="head"><span class="num">01</span><h2>The pull request became the unit of account</h2></div>
+    <p>In an agentic workflow the ratio is close to one session, one pull request. Pure investigations are the exception. So the cost of a piece of work is <strong>the length of the session plus the length of the review</strong>, and nothing else. That makes the pull request a real unit rather than a bookkeeping artefact.</p>
+    <p>It also finishes off lines of code as a measure. When a machine writes the lines, a six-hundred-line change and a sixty-line change cost about the same session. The denominator is the PR.</p>
+    <p>One number would have to be published alongside it or it means nothing: <strong>rework</strong>: reverted, reopened, or immediately followed up. Volume without that is trivially gamed by splitting every job in three. It is also the number nobody will ever report, because it is the embarrassing one.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="num">02</span><h2>The concurrency number is somebody else's</h2></div>
+    <p>Three or four sessions at once is about the practical limit for one person. Some platforms offer ten.</p>
+    <p class="kicker">A platform's limit is set by what it can run. Yours is set by what one person can review.</p>
+    <p>Ten agents is ten streams into a single reviewer, and nothing in the product says so. It is sold as capacity and it is actually a queue into a bottleneck the product cannot see. Sessions parallelise; review does not. That ceiling is fixed, and everything else here is downstream of it.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="num">03</span><h2>Four thresholds, crossed without deciding</h2></div>
+    <p>None of this matters if you are building a to-do list. It all matters the moment the project is substantial, and the hard part is that you cannot easily tell in advance which kind you have. The thresholds are not size or complexity. They are these, and crossing any one changes the category:</p>
+
+    <div class="thresholds">
+      <div class="th"><span class="tick">&#9650;</span><div>
+        <div class="q">Does it hold data somebody would be upset to lose?</div>
+        <div class="why">The moment there is a record of record, you inherit backups, restores, migrations and faithfulness, silently, because nothing announces it.</div>
+      </div></div>
+      <div class="th"><span class="tick">&#9650;</span><div>
+        <div class="q">Does more than one organisation use it?</div>
+        <div class="why">The largest single cliff, and its failure mode is invisible from inside your own account.</div>
+      </div></div>
+      <div class="th"><span class="tick">&#9650;</span><div>
+        <div class="q">Does anything leave the system and get relied on by someone else?</div>
+        <div class="why">An export a consultant opens; a report with a statutory audience. It stops being your screen and becomes someone's evidence.</div>
+      </div></div>
+      <div class="th"><span class="tick">&#9650;</span><div>
+        <div class="q">Does it take money?</div>
+        <div class="why">Everything above, plus somebody else's expectations about all of it.</div>
+      </div></div>
+    </div>
+
+    <p>The cruelty is that <strong>you cross these without making a decision.</strong> Nobody chooses multi-tenancy; they add a second customer. Nobody chooses a record of record; they stop deleting the test data. The project changes category at a moment you would have no reason to notice.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="num">04</span><h2>Adjacency is coupling</h2></div>
+    <p>You start with an app that does three things. Adjacent capabilities become apparent, or are suggested to you, at an alarming rate. Each is cheap on its own, so the friction against saying yes is low. You say yes to ten things that look like they are simply making the original three better.</p>
+    <p class="kicker">The features that feel safest to add are the most entangling ones, because sharing data, screens and vocabulary is the definition of coupling.</p>
+    <p>A genuinely distant feature, billing say, touches little. The intuition that <em>this is just making what we have better</em> is not merely wrong, it is inverted.</p>
+    <p>And the agent is not lying when it quotes the cost. It is answering the implementation question honestly. What goes unquoted is the <strong>interaction</strong> cost, which scales with everything already there, so the eleventh feature is not the price of the third, and nothing in the exchange makes that visible.</p>
+    <p>Underneath each yes sit dozens of background decisions the agent takes on its own, correctly, without asking. They are <strong>locally obvious and globally arbitrary</strong>: each defensible in isolation, the set incoherent. Nobody ever sees the set. The disagreement surfaces later, when two of those answers meet in a customer's data.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="num">05</span><h2>The two questions, and which phase owns them</h2></div>
+    <div class="pair2">
+      <div class="qcard generative">
+        <div class="when">Before it works</div>
+        <div class="qq">What does this make possible?</div>
+        <p>The generative question. It is the one that produced the product, it feels like progress, and it is correct, right up until people depend on the thing.</p>
+      </div>
+      <div class="qcard custodial">
+        <div class="when">Once it works</div>
+        <div class="qq">What does this touch?</div>
+        <p>With two companions: <strong>is any of what it touches load-bearing</strong>, and <strong>when it touches them, what behaviour will that produce?</strong></p>
+      </div>
+    </div>
+    <p>The switch is hard to make because the wrong question feels like momentum and the right one feels like friction. So the phase change announces itself no more clearly than the thresholds did. You simply keep asking the question that built the thing, in a world where it has started to cost.</p>
+    <p><strong>The third companion does the real work.</strong> Touching something is not the risk; changing what it does is.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="num">06</span><h2>What a small fix actually changed</h2></div>
+    <p>Five changes from a single day. Not one is a feature. Every one carried a decision larger than its diff.</p>
+    <div class="evid">
+      <div class="ev"><span class="id">#732</span><span class="what">Fold case in a name comparison. <b>One line.</b> It widens the candidate list at five call sites, one of which pre-selects a radio button in a review queue.</span></div>
+      <div class="ev"><span class="id">#734</span><span class="what">Delete twenty words from a set. <b>Every address arriving in capitals now capitalises differently.</b></span></div>
+      <div class="ev"><span class="id">#715</span><span class="what">Apply an existing predicate at a second site. An import that quietly merged two rows now stores two, and <b>reports a different number to the customer.</b></span></div>
+      <div class="ev"><span class="id">#709</span><span class="what">Add one function call. <b>A review step no all-caps importer had ever seen now appears.</b></span></div>
+      <div class="ev"><span class="id">#738</span><span class="what">Render a SQL literal by column type. A restore that used to report success now <b>fails, deliberately,</b> on dumps it previously skipped past.</span></div>
+    </div>
+    <p>The same caution applies to fixing bugs as to adding features. Machinery defects demand it too: the fix carries choices, and the choices have consequences.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="num">07</span><h2>The probe, and why it must be able to say no</h2></div>
+    <p>Asking <em>what does this touch</em> properly used to be prohibitive: laborious, tedious, and exactly the work a person does badly late in the day. It is now cheap. Reading nineteen sort sites and ruling out six comparisons one at a time is precisely what an agent is good at, and it costs one pass.</p>
+    <p class="kicker">Its best outcome is that you do not build. Most estimation practice cannot produce a no; you ask how long, you get a number, and a number is an invitation.</p>
+    <div class="aside">
+      <h3>Two design details that do all the work</h3>
+      <p><strong>It must have no stake.</strong> An agent asked to list what a feature touches immediately before building it has already been aimed. The probe only works as its own pass, told explicitly that it changes no behaviour and that there may be no pull request at all.</p>
+      <p><strong>It must be allowed to end the job.</strong> Write its questions so that answering one can close the work, and mean it. A probe that can only ever return "proceed, carefully" is a formality.</p>
+    </div>
+    <p>It has a blind spot, and it is the generative question again: the probe answers what a change touches, not what it will make tempting. So the companion worth asking alongside is <em>what does this make possible that isn't possible now</em>, the one that catches the cascade rather than the coupling.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="num">08</span><h2>Why it appears in none of the guides</h2></div>
+    <p>Not an oversight. <strong>No platform is incentivised to ship a feature whose success case is inaction.</strong> All of them are optimised for time-to-first-working-thing, which is exactly the phase where the probe is least necessary and most irritating.</p>
+    <p>The moment it starts earning its keep is the moment you stop being the user they designed for.</p>
+  </section>
+
+  <section>
+    <div class="head"><span class="num">09</span><h2>What actually defends you is institutional memory</h2></div>
+    <p>The expensive mistakes of a month were not coding failures. A bulk acceptance of hundreds of generated tasks. Guards asserting more than they verified. An exit code that meant <em>skipped</em> and read as <em>passed</em>. A hundred and fifteen test files no workflow ran. Documents that had drifted from the code they described.</p>
+    <p>Every one is a <strong>memory</strong> failure, the thing a team has by accident, through people who were there, and which a solo operator running agents has to build on purpose. Each session starts cold. Nobody holds the whole system between them.</p>
+    <p>So the defences are the ones that execute themselves. A decisions log makes the set of background choices visible. A capabilities document makes the surface visible. <strong>A guard is a background decision made permanent and checkable</strong>, so it cannot be quietly re-decided by the next session that passes through.</p>
+    <p class="kicker">The guards are not compensating for carelessness. They are compensating for speed exceeding the rate at which any one view of the system can stay whole.</p>
+  </section>
+
+  <footer>
+    Observations from a single project, so read them as hypotheses rather than laws.<br>
+    The numbers are real: 270 pull requests in a month, 21 issues closed in the day this was written, 8 of 55 dialogs over the line, 5 of 9 rows lost on a restore that exited 0.<br><br>
+    Michael Robinson, September 2026. If any of this matches or contradicts your own experience, I would rather hear about it than not.
+  </footer>
+
+</div>
+
+</body></html>
